@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BulSU E-Library Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            font-size: 12px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .card {
+            border: 3px solid black;
+            padding: 10px;
+            width: 300px;
+            text-align: left;
+            font-size: 12px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .card:hover {
+            background-color: #d3d3d3; /* Light gray */
+            cursor: pointer;
+            transform: scale(1.02); /* Slight zoom effect */
+        }
+        .card img {
+            width: 50px;
+            height: 50px;
+            float: right;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+            position: relative;
+        }
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .modal-content p {
+            margin: 5px 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bulacan State University</h1>
+    <h2>BulSU E-Library Users</h2>
+    <div class="container" id="userList"></div>
+    <div class="modal" id="studentModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <img id="modalPicture" src="" alt="Student Photo">
+            <p><strong>Name:</strong> <span id="modalName"></span></p>
+            <p><strong>Course:</strong> <span id="modalCourse"></span></p>
+            <p><strong>Year Level / Section:</strong> <span id="modalYearSection"></span></p>
+            <p><strong>Adviser:</strong> <span id="modalAdviser"></span></p>
+            <p><strong>School Year:</strong> <span id="modalSchoolYear"></span></p>
+        </div>
+    </div>
+
+    <script>
+        fetch('judas_desales.xml')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to load XML file');
+                }
+                return response.text();
+            })
+            .then(xmlString => {
+                let parser = new DOMParser();
+                let xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+                let students = xmlDoc.getElementsByTagName("student");
+                let container = document.getElementById("userList");
+
+                for (let student of students) {
+                    let name = student.getElementsByTagName("name")[0]?.textContent || "N/A";
+                    let course = student.getElementsByTagName("course")[0]?.textContent || "N/A";
+                    let yearSection = student.getElementsByTagName("year_section")[0]?.textContent || "N/A";
+                    let adviser = student.getElementsByTagName("adviser")[0]?.textContent || "N/A";
+                    let schoolYear = student.getElementsByTagName("school_year")[0]?.textContent || "N/A";
+                    let picture = student.getElementsByTagName("picture")[0]?.textContent || "images/default.jpg";
+
+                    let card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `
+                        <img src="${picture}" alt="Student Photo" onerror="this.src='images/default.jpg'">
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Course:</strong> ${course}</p>
+                        <p><strong>Year Level / Section:</strong> ${yearSection}</p>
+                        <p><strong>Adviser:</strong> ${adviser}</p>
+                        <p><strong>School Year:</strong> ${schoolYear}</p>
+                    `;
+                    card.addEventListener('click', () => {
+                        document.getElementById("modalPicture").src = picture;
+                        document.getElementById("modalName").textContent = name;
+                        document.getElementById("modalCourse").textContent = course;
+                        document.getElementById("modalYearSection").textContent = yearSection;
+                        document.getElementById("modalAdviser").textContent = adviser;
+                        document.getElementById("modalSchoolYear").textContent = schoolYear;
+                        document.getElementById("studentModal").style.display = "flex";
+                    });
+                    container.appendChild(card);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("userList").innerHTML = "<p>Failed to load user data.</p>";
+            });
+
+        document.getElementById("closeModal").addEventListener('click', () => {
+            document.getElementById("studentModal").style.display = "none";
+        });
+
+        document.getElementById("studentModal").addEventListener('click', (event) => {
+            if (event.target === document.getElementById("studentModal")) {
+                document.getElementById("studentModal").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

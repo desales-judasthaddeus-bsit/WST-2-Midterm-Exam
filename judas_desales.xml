@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <name>Judas Thaddeus Desales</name>
+        <course>BSIT</course>
+        <year_section>3B-G2</year_section>
+        <adviser>Prof. Juan Dela Cruz</adviser>
+        <school_year>S.Y. 2024-2025</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Andrew Joseph Baculanta</name>
+        <course>BLIS</course>
+        <year_section>2A-G1</year_section>
+        <adviser>Prof. Maria Santos</adviser>
+        <school_year>S.Y. 2023-2024</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Lanz Aleizer Venegas</name>
+        <course>BSIS</course>
+        <year_section>1B-G2</year_section>
+        <adviser>Prof. Ricardo Gomez</adviser>
+        <school_year>S.Y. 2025-2026</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Genesis Eugenio</name>
+        <course>BAB</course>
+        <year_section>4A-G1</year_section>
+        <adviser>Prof. Anna Reyes</adviser>
+        <school_year>S.Y. 2024-2025</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Martin Macasaet</name>
+        <course>BAJ</course>
+        <year_section>3B-G2</year_section>
+        <adviser>Prof. Jose Dizon</adviser>
+        <school_year>S.Y. 2023-2024</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Ericlanz Ignacio</name>
+        <course>BSA</course>
+        <year_section>2A-G1</year_section>
+        <adviser>Prof. Angela Cruz</adviser>
+        <school_year>S.Y. 2025-2026</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Cindy Loraine Santiago</name>
+        <course>BSME</course>
+        <year_section>1B-G2</year_section>
+        <adviser>Prof. Luis Fernandez</adviser>
+        <school_year>S.Y. 2024-2025</school_year>
+        <picture>images/Student_Female.jpg</picture>
+    </student>
+    <student>
+        <name>Aeron Faundo Berboso</name>
+        <course>BSCE</course>
+        <year_section>4A-G1</year_section>
+        <adviser>Prof. Melinda Torres</adviser>
+        <school_year>S.Y. 2023-2024</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Amiel Nueva</name>
+        <course>BSN</course>
+        <year_section>3B-G2</year_section>
+        <adviser>Prof. Henry Salvador</adviser>
+        <school_year>S.Y. 2025-2026</school_year>
+        <picture>images/Student_Male.jpg</picture>
+    </student>
+    <student>
+        <name>Heaven Cordova</name>
+        <course>BSB</course>
+        <year_section>2A-G1</year_section>
+        <adviser>Prof. Carmela Vergara</adviser>
+        <school_year>S.Y. 2024-2025</school_year>
+        <picture>images/Student_Female.jpg</picture>
+    </student>
+</students>
